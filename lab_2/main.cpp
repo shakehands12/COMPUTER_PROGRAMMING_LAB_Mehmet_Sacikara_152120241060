@@ -7,7 +7,6 @@ struct Node {
     string data;
     Node* next;
 };
-
 void addWord(Node*& head, string word) {
     Node* newNode = new Node();
     newNode->data = word;
@@ -36,6 +35,7 @@ void undo(Node*& head) {
     while (temp->next->next != nullptr) {
         temp = temp->next;
     }
+
     delete temp->next;
     temp->next = nullptr;
 }
@@ -48,25 +48,31 @@ void display(Node* head) {
     }
     cout << "NULL" << endl;
 }
+
 int main() {
     Node* head = nullptr;
     string input;
 
     while (true) {
         cin >> input;
+
         if (input == "EXIT") {
             break;
+        }
         else if (input == "exit"){
             break;
         }
-        } else if (input == "UNDO") {
+         else if (input == "UNDO") {
             undo(head);
+        }
+
         else if (input == "undo"){
             undo(head);
         }
-        } else {
+         else {
             addWord(head, input);
         }
+
         display(head);
     }
 
